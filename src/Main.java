@@ -65,13 +65,17 @@ public class Main {
             System.out.print("Введите строку и столбец (например, 1 2): ");
             int row = scanner.nextInt();
             int col = scanner.nextInt();
-
+        try {
             if (mines[row][col]) {
                 System.out.println("Вы наткнулись на мину! Игра окончена.");
                 break;
             } else {
                 field[row][col] = field[row][col]; // Открываем клетку
             }
+        } catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Вы ввели неправильное поле");
+            continue;
+        }
         }
         scanner.close();
     }
